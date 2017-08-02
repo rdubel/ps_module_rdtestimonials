@@ -39,6 +39,20 @@ namespace
             return true;
         }
 
+        public function installDb() {
+            $sql = "CREATE TABLE IF NOT EXISTS `"._DB_PREFIX_."testimonials`(
+                `id_testimonial` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                `title` VARCHAR(250) NOT NULL ,
+                `body` TEXT ,
+                `publication_date` DATE NOT NULL) DEFAULT CHARSET=utf8";
+
+            if (!$result=Db::getInstance()->Execute($sql)) {
+                return false;
+            }
+
+            return true;
+        }
+
         public function install()
         {
             if (Shop::isFeatureActive()) {
@@ -47,6 +61,7 @@ namespace
 
             if (!parent::install()
             || !$this->installTab()
+            || !$this->installDb()
             ) {
                 return false;
             }
@@ -70,10 +85,21 @@ namespace
             return true;
         }
 
+        public function uninstallDb() {
+            $sql = "DROP TABLE IF EXISTS `"._DB_PREFIX_."testimonials`";
+
+            if (!$result=Db::getInstance()->Execute($sql)) {
+                return false;
+            }
+
+            return true;
+        }
+
         public function uninstall()
         {
             if (!parent::uninstall()
             || !$this->uninstallTab()
+            || !$this->uninstallDb()
             ) {
                 return false;
             }
