@@ -24,35 +24,35 @@ namespace
                     'title' => 'Publication date',
                 ),
             );
-
-            $this->fields_form = array(
-                'legend' => array(
-                    'title' => 'Post'
-                ),
-                'input' => array(
-                    array(
-                        'type' => 'text',
-                        'label' => 'Title',
-                        'name' => 'title',
-                        'size' => 25
-                    ),
-                    array(
-                        'type' => 'textarea',
-                        'label' => 'Content',
-                        'name' => 'body',
-                        'size' => 25
-                    ),
-                    array(
-                        'type' => 'date',
-                        'label' => 'Publication date',
-                        'name' => 'publication_date',
-                        'size' => 25
-                    )
-                ),
-                'submit' => array(
-                    'title' => 'Save'
-                )
-            );
+            //
+            // $this->fields_form = array(
+            //     'legend' => array(
+            //         'title' => 'Post'
+            //     ),
+            //     'input' => array(
+            //         array(
+            //             'type' => 'text',
+            //             'label' => 'Title',
+            //             'name' => 'title',
+            //             'size' => 25
+            //         ),
+            //         array(
+            //             'type' => 'textarea',
+            //             'label' => 'Content',
+            //             'name' => 'body',
+            //             'size' => 25
+            //         ),
+            //         array(
+            //             'type' => 'date',
+            //             'label' => 'Publication date',
+            //             'name' => 'publication_date',
+            //             'size' => 25
+            //         )
+            //     ),
+            //     'submit' => array(
+            //         'title' => 'Save'
+            //     )
+            // );
 
             $this->bulk_actions = array(
                 'delete' => array(
@@ -61,7 +61,7 @@ namespace
                 ),
             );
 
-            $this->addRowAction('delete');
+            // $this->addRowAction('delete');
             parent::__construct();
         }
         }
