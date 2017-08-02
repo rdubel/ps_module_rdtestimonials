@@ -41,7 +41,7 @@ namespace
 
         public function installDb() {
             $sql = "CREATE TABLE IF NOT EXISTS `"._DB_PREFIX_."testimonials`(
-                `id_testimonial` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                `id_testimonials` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 `title` VARCHAR(250) NOT NULL ,
                 `body` TEXT ,
                 `publication_date` DATE NOT NULL) DEFAULT CHARSET=utf8";
