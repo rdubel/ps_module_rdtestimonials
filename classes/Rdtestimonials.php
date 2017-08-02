@@ -23,7 +23,8 @@ namespace
             $this->confirmUninstall ='Are you sure you want to uninstall?';
         }
 
-        public function installTab() {
+        public function installTab()
+        {
             $tab = new Tab();
             foreach (Language::getLanguages(true) as $lang) {
                 $tab->name[$lang['id_lang']] = $this->l('Rdtestimonials');
@@ -39,7 +40,8 @@ namespace
             return true;
         }
 
-        public function installDb() {
+        public function installDb()
+        {
             $sql = "CREATE TABLE IF NOT EXISTS `"._DB_PREFIX_."testimonials`(
                 `id_testimonials` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 `title` VARCHAR(250) NOT NULL ,
@@ -69,7 +71,8 @@ namespace
             return true;
         }
 
-        public function uninstallTab() {
+        public function uninstallTab()
+        {
             $moduleTabs = Tab::getCollectionFromModule($this->name);
             if (!empty($moduleTabs)) {
 
@@ -85,7 +88,8 @@ namespace
             return true;
         }
 
-        public function uninstallDb() {
+        public function uninstallDb()
+        {
             $sql = "DROP TABLE IF EXISTS `"._DB_PREFIX_."testimonials`";
 
             if (!$result=Db::getInstance()->Execute($sql)) {
@@ -106,6 +110,5 @@ namespace
 
             return true;
         }
-
     }
 }

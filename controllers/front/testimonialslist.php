@@ -28,9 +28,9 @@ namespace
 
                 }
 
-            $this->context->smarty->assign(array(
+                $this->context->smarty->assign(array(
                 'testimonials' => $testimonials,
-            ));
+                ));
             }
 
         }
