@@ -23,6 +23,22 @@ namespace
             $this->confirmUninstall ='Are you sure you want to uninstall?';
         }
 
+        public function installTab() {
+            $tab = new Tab();
+            foreach (Language::getLanguages(true) as $lang) {
+                $tab->name[$lang['id_lang']] = $this->l('Rdtestimonials');
+            }
+            $tab->module = $this->name;
+            $tab->id_parent = 0;
+            $tab->class_name = "AdminRdtestimonials";
+
+            if (!$tab->add()) {
+                return false;
+            }
+
+            return true;
+        }
+
         public function install()
         {
             if (Shop::isFeatureActive()) {
@@ -30,6 +46,7 @@ namespace
             }
 
             if (!parent::install()
+            || !$this->installTab()
             ) {
                 return false;
             }
@@ -37,10 +54,26 @@ namespace
             return true;
         }
 
+        public function uninstallTab() {
+            $moduleTabs = Tab::getCollectionFromModule($this->name);
+            if (!empty($moduleTabs)) {
+
+                foreach ($moduleTabs as $tab) {
+
+                    if (!$tab->delete()
+                    ) {
+                        return false;
+                    }
+
+                }
+            }
+            return true;
+        }
 
         public function uninstall()
         {
             if (!parent::uninstall()
+            || !$this->uninstallTab()
             ) {
                 return false;
             }
